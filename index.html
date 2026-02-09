@@ -1,475 +1,513 @@
-<!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Hi, Jon Here. Please DELETE the two <script> tags below if you use this HTML, otherwise my analytics will track your page -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7580334-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geng Yang - Ant Research</title>
+    <!-- 引入 Google Fonts 和 FontAwesome 图标库 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    gtag('config', 'UA-7580334-2');
-  </script>
-  <style>
-    .navA{
-      display: inline-block;
-      margin-right: 13px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #000;
-      text-decoration: none;
-      padding: 5px ;
-      border: #000 1px solid;
-    }
-    .navA:hover{
-      color: #fff;
-      background-color: #000;
-    }
-  </style>
+    <style>
+        /* --- 全局样式 --- */
+        :root {
+            --primary-color: #1677ff; /* 蚂蚁蓝 */
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
+            --bg-color: #f9fafb;
+            --container-bg: #ffffff;
+        }
 
-  <title>Geng Yang</title>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+        }
 
-  <meta name="author" content="Jon Barron">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-<!--   <link rel="icon" type="image/png" href="images/seal_icon.png"> -->
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- 容器布局 --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            padding: 60px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* --- 头部简介 (Bio) --- */
+        .header-section {
+            display: flex;
+            align-items: start; /* 顶部对齐 */
+            gap: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 40px;
+        }
+
+        .bio-text {
+            flex: 1;
+        }
+
+        .bio-text h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .bio-text .role {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .bio-intro p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            text-align: justify; /* 两端对齐让大段文字更好看 */
+        }
+
+        .bio-photo img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background-color: #f3f4f6;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-decoration: none !important;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- 通用板块样式 --- */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f3f4f6;
+            color: #111;
+        }
+
+        /* --- 列表与条目 --- */
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* --- 论文板块 --- */
+        .pub-item {
+            margin-bottom: 25px;
+        }
+
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #111;
+            display: block;
+            margin-bottom: 4px;
+            text-decoration: none;
+        }
+
+        .pub-title:hover {
+            color: var(--primary-color);
+        }
+
+        .pub-authors {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .me {
+            font-weight: 700;
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tag-venue {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .pub-links {
+            margin-top: 6px;
+        }
+
+        .link-pill {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 99px;
+            color: var(--text-light);
+            margin-right: 8px;
+            text-decoration: none !important;
+        }
+
+        .link-pill:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- 竞赛奖项详细展示样式 (无图版) --- */
+        .contest-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .contest-item:last-of-type {
+            border-bottom: none; /* 最后一个不需要下划线，因为它上面有列表 */
+        }
+
+        .contest-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contest-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .contest-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background-color: #f9fafb;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        /* --- 地图部分样式 --- */
+        .map-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .map-card {
+            display: inline-block; /* 让卡片宽度自适应内容 */
+            background-color: var(--bg-color);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .map-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .map-caption {
+            margin-top: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* --- 响应式适配 --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .header-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 20px;
+            }
+            .bio-intro p {
+                text-align: left;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .award-item {
+                flex-direction: column;
+            }
+            .award-year {
+                margin-bottom: 2px;
+            }
+        }
+    </style>
 </head>
-
-  <style>
-  .listbox{
-      position: static;
-      overflow-y: scroll;
-      height: 224px;
-      color: black;
-      background-color: #EAF6FF;
-  /*     border: 2px solid black; */
-  /*     padding: 20px 50px 0px 30px; */
-  /*     font-size: 15px; */
-      }
-</style>
-
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Geng Yang</name>
-              </p>
 
-              <p>Geng is a Ph.D student in the <a href="https://ste.xidian.edu.cn/">School of Communication Engineering</a> at <a href="https://www.xidian.edu.cn/"> Xidian University</a> in China, 
-                supervised with Prof. <a href="https://web.xidian.edu.cn/ysli/">Yunsong Li</a> and Prof. <a href="https://web.xidian.edu.cn/leijie/index.html">Jie Lei</a>.
-                She expects to graduate in Dec. 2024.
-              </p>
-              <p>
-                Her research focuses on algorithm-hardware co-design for DNN architecture and high-performance FPGA-based hardware acceleration. 
-                Over the past three years, she has been dedicated to the development of an end-to-end DNN model inference acceleration system that integrates hardware-friendly model pruning and quantization, and FPGA-based hardware architecture. 
-                She has actively participated in one National Natural Science Foundation of China and two large national projects under related topics. Geng’s work has been published in high-impact journals and references such as TRETS, TGRS, JSTAR, FPL, etc.
+<div class="container">
+    
+    <!-- 1. Header / Bio Section -->
+    <header class="header-section">
+        <div class="bio-text">
+            <h1>Geng Yang (杨埂)</h1>
+            <div class="role">Researcher @ Computing System Laboratory, Ant Research</div>
+            
+            <div class="bio-intro">
+                <p>
+                    I am currently a Researcher at the <b>Computing System Laboratory, Ant Research (蚂蚁集团)</b>, working in the team led by Dr. <a href="https://mingzhe-zhang.github.io/">Mingzhe Zhang</a>. 
+                    I received my Ph.D. degree in December 2024 from <a href="https://www.xidian.edu.cn/">Xidian University</a>, 
+                    under the supervision of Prof. <a href="https://web.xidian.edu.cn/ysli/">Yunsong Li</a> and Prof. <a href="https://web.xidian.edu.cn/leijie/index.html">Jie Lei</a>.
+                </p>
                 
-                In recent months, she has been collaborating with Professor <a href="https://www.sfu.ca/~zhenman/index.html">Zhenman Fang</a> from Simon Fraser University on the hardware acceleration of larger and more complex DNN-Stable Diffsion inference.
-              </p>
-              <p>
-                Geng's Email: gengyang [at] stu.xidian.edu.cn
-              </p>
-          
-              <p style="text-align:center">
-                <a href="mailto:gengyang@stu.xidian.edu.cn">Email</a> &nbsp/&nbsp
-                <a href="cv_geng\CV_XidianUniversity_GengYang.pdf">CV</a> &nbsp/&nbsp
-                <a href="https://scholar.google.com/citations?user=vJDuS2IAAAAJ&hl=zh-CN">Google Scholar</a> 
-              </p>
-            </td>
+                <p>
+                    During my Ph.D., I was dedicated to <b>Algorithm-Hardware Co-design</b> for DNN architecture and high-performance FPGA acceleration. 
+                    I developed efficient end-to-end DNN model inference systems (e.g., Stable Diffusion) by integrating hardware-friendly model pruning and quantization with FPGA-based hardware architectures.
+                </p>
 
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="images/Geng_Yang.jpg"><img style="width:60%;max-width:60%" alt="profile photo" src="image_geng\Geng_Yang.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
+                <p>
+                    <b>Currently</b>, I am diving deeper into <b>Computer Architecture</b> and expanding my research to <b>Privacy-Preserving Computing</b>, 
+                    specifically exploring <b>Fully Homomorphic Encryption (FHE)-based DNN acceleration</b>.
+                </p>
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:yanggeng.yang@antgroup.com" class="social-btn">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://scholar.google.com/citations?user=vJDuS2IAAAAJ&hl=zh-CN" class="social-btn" target="_blank">
+                    <i class="fas fa-graduation-cap"></i> Scholar
+                </a>
+                <a href="https://github.com/Michaela1224" class="social-btn" target="_blank">
+                    <i class="fab fa-github"></i> Github
+                </a>
+                <!-- CV Button set to Updating status -->
+                <span class="social-btn" style="pointer-events: none; opacity: 0.7;">
+                    <i class="fas fa-file-pdf"></i> CV (Updating...)
+                </span>
+            </div>
+        </div>
+        <div class="bio-photo">
+            <!-- 建议使用一张清晰的正方形或 4:3 照片 -->
+            <img src="image_geng/Geng_Yang.jpg" alt="Geng Yang">
+        </div>
+    </header>
 
-        <div class="navbar" style="padding-left: 18px;">
-<!--           <a href="#Research" class="navA">Research</a>
-          <a href="#News" class="navA">News</a> -->
-          <a href="#Journal Articles" class="navA">Journal and Conference Publications</a>
-          <a href="#Conference Abstracts" class="navA">Conference Abstracts</a>
-<!--           <a href="#Students" class="navA">Students</a> -->
-          <a href="#Patents" class="navA">Patents</a>
-          <a href="#Contests" class="navA">Contests</a>
-          <a href="#Honors" class="navA">Awards</a>
-          <a href="#Services" class="navA">Services</a>
-          <a href="#Demo" class="navA">Demo</a>
+    <!-- 3. Selected Publications -->
+    <section>
+        <h2 class="section-title">Selected Publications</h2>
+        
+        <!-- NEW PAPER: ASPLOS 2026 -->
+        <div class="pub-item">
+            <a href="#" class="pub-title">Falcon: Algorithm-Hardware Co-Design for Efficient Fully Homomorphic Encryption Accelerator</a>
+            <div class="pub-authors">
+                Liang Kong, Shengyu Fan, Xianglong Deng, Lei Chen, Guang Fan, Yilan Zhu, <span class="me">Geng Yang</span>, Yisong Chang, Shoumeng Yan, Mingzhe Zhang
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">ASPLOS 2026</span> · International Conference on Architectural Support for Programming Languages and Operating Systems
+            </div>
+            <div class="pub-links">
+                <span class="link-pill">Coming Soon</span>
+            </div>
         </div>
 
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-  
-            <td width="100%" valign="middle">
-  
-              <heading id="Research"><b>Research Interests</b></heading>
-  
-              <ul>
-              <li><p>
-                <strong>FPGA-based Edge/Large Model Inference Acceleration</strong>
-              </p>
+        <!-- NEW PAPER: HPCA 2026 (Marked as Co-First Author) -->
+        <div class="pub-item">
+            <a href="#" class="pub-title">An Efficient and Scalable Hardware Architecture for Number Theoretic Transform on FPGA with Design Automation</a>
+            <div class="pub-authors">
+                Yilan Zhu*, <span class="me">Geng Yang</span>*, Xingyu Tian, Dilshan Kumarathunga, Liang Kong, Xianglong Deng, Shengyu Fan, Guang Fan, Guiming Shi, Lei Chen, Bo Zhang, Yisong Chang, Shoumeng Yan, Zhenman Fang, Mingzhe Zhang 
+                <span style="font-size: 0.9em; color: var(--text-light);">(* Equal contribution)</span>
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">HPCA 2026</span> · IEEE International Symposium on High-Performance Computer Architecture
+            </div>
+            <div class="pub-links">
+                <span class="link-pill">Coming Soon</span>
+            </div>
+        </div>
 
-                <li><p>
-                <strong>Algorithm-Hardware Co-design and Automation</strong>
-                </p>
-  
-              </ul>
-            </td>
-          </tr>
+        <!-- Paper 1: FPL 2024 SDA (Updated Authors) -->
+        <div class="pub-item">
+            <a href="pdf_geng/FPL2024-SDA.pdf" class="pub-title">SDA: Low-Bit Stable Diffusion Acceleration on Edge FPGAs</a>
+            <div class="pub-authors">
+                <span class="me">Geng Yang</span>, Yanyue Xie, Zhong Jia Xue, Sung-En Chang, Yanyu Li, Peiyan Dong, Jie Lei, Weiying Xie, Yanzhi Wang, Xue Lin, Zhenman Fang
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">FPL 2024</span> · International Conference on Field-Programmable Logic and Applications (Acceptance Rate: 22.8%)
+            </div>
+            <div class="pub-links">
+                <a href="pdf_geng/XXXX.pdf" class="link-pill">PDF</a>
+                <a href="https://github.com/Michaela1224/SDA_code" class="link-pill">Code</a>
+            </div>
+        </div>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:10px;width:100%;vertical-align:middle">
-              <heading id="Publications"><b>Selected Publications</b></heading>
-              <h2><a href="https://scholar.google.com/citations?user=vJDuS2IAAAAJ&hl=zh-CN">Full publication list</a></h2>
-            </td>
-          </tr>
-        </tbody></table>
+        <!-- Paper 2: FPL 2024 SA4 (Updated Authors) -->
+        <div class="pub-item">
+            <a href="pdf_geng/FPL2024-SA4.pdf" class="pub-title">SA4: A Comprehensive Analysis and Optimization of Systolic Array Architecture for 4-bit Convolutions</a>
+            <div class="pub-authors">
+                <span class="me">Geng Yang</span>, Jie Lei, Zhenman Fang, Jiaqing Zhang, Junrong Zhang, Weiying Xie, Yunsong Li
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">FPL 2024</span> · International Conference on Field-Programmable Logic and Applications
+            </div>
+            <div class="pub-links">
+                <a href="pdf_geng/XXXX.pdf" class="link-pill">PDF</a>
+                <a href="https://github.com/Michaela1224/SA4" class="link-pill">Code</a>
+            </div>
+        </div>
 
+        <!-- Paper 3: TCSVT 2024 (Updated Authors) -->
+        <div class="pub-item">
+            <a href="pdf_geng/TCSVT2024-MIViT.pdf" class="pub-title">Multimodal Informative ViT: Information Aggregation and Distribution for Hyperspectral and LiDAR Classification</a>
+            <div class="pub-authors">
+                Jiaqing Zhang, Jie Lei, Weiying Xie, <span class="me">Geng Yang</span>, Daixun Li, Yunsong Li
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">TCSVT 2024</span> · IEEE Transactions on Circuits and Systems for Video Technology
+            </div>
+            <div class="pub-links">
+                <a href="pdf_geng/TCSVT2024-MIViT.pdf" class="link-pill">PDF</a>
+            </div>
+        </div>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <!-- Paper 4: TRETS 2023 (Updated Authors) -->
+        <div class="pub-item">
+            <a href="pdf_geng/TRETS2023-HyBNN.pdf" class="pub-title">HyBNN: Quantifying and Optimizing Hardware Efficiency of Binary Neural Networks</a>
+            <div class="pub-authors">
+                <span class="me">Geng Yang</span>, Jie Lei, Zhenman Fang, Yunsong Li, Jiaqing Zhang, Weiying Xie
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">TRETS 2023</span> · ACM Transactions on Reconfigurable Technology and Systems (FPT Journal Track)
+            </div>
+            <div class="pub-links">
+                <a href="pdf_geng/TRETS2023-HyBNN.pdf" class="link-pill">PDF</a>
+                <a href="PPT_geng/HyBNN-FPT2023-Oral.pdf" class="link-pill">Oral Slides</a>
+            </div>
+        </div>
 
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\sda.png" alt="SDA" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="SDA">
-                <b>SDA: Low-Bit Stable Diffusion Acceleration on Edge FPGAs</b>
-              </a>
-              <br>
-              <b>G. Yang</b>, Y. Xie, Z. Xue, S. Chang, Y. Li, P. Dong, J. Lei, W. Xie, Y. Wang, X. Lin, Z. Fang
-              <br>
-              <b>[FPL2024(Acceptance Rate: 22.8%, 29 out of 127)]</b> 
-              <a href="pdf_geng\XXXX.pdf">Paper</a>/
-              <a href="https://github.com/Michaela1224/SDA_code">Code</a> 
-            </td>
-          </tr>
-          
-          
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\SA4.png" alt="SA4" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="SA4">
-                <b>SA4: A Comprehensive Analysis and Optimization of Systolic Array Architecture for 4-bit Convolutions</b>
-              </a>
-              <br>
-              <b>G. Yang</b>, J. Lei, Z. Fang, J.Q. Zhang, J.R. Zhang, W. Xie,Y. Li
-              <br>
-              <b>[FPL2024(Acceptance Rate: 22.8%, 29 out of 127)]</b> 
-              <a href="pdf_geng\XXXX.pdf">Paper</a>/
-              <a href="https://github.com/Michaela1224/SA4">Code</a> 
-            </td>
-          </tr>
+        <!-- Paper 5: TGRS 2022 (Updated Authors) -->
+        <div class="pub-item">
+            <a href="pdf_geng/TGRS2022-OSCAR-RT.pdf" class="pub-title">Algorithm/hardware Codesign for Real-time On-satellite CNN-based Ship Detection in SAR Imagery</a>
+            <div class="pub-authors">
+                <span class="me">Geng Yang</span>, Jie Lei, Weiying Xie, Zhenman Fang, Yunsong Li, Jiaxuan Wang, Xin Zhang
+            </div>
+            <div class="pub-venue">
+                <span class="tag-venue">TGRS 2022</span> · IEEE Transactions on Geoscience and Remote Sensing
+            </div>
+            <div class="pub-links">
+                <a href="pdf_geng/TGRS2022-OSCAR-RT.pdf" class="link-pill">PDF</a>
+                <a href="https://github.com/Michaela1224/OSCAR-RT" class="link-pill">Code</a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="https://scholar.google.com/citations?user=vJDuS2IAAAAJ&hl=zh-CN" style="font-weight: 600;">View Full List on Google Scholar &rarr;</a>
+        </div>
+    </section>
 
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\MIViT.png" alt="MIViT" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="MIViT">
-                <b>Multimodal Informative ViT: Information Aggregation and Distribution for Hyperspectral and LiDAR Classification</b>
-              </a>
-              <br>
-                 J. Zhang, J. Lei,  W. Xie, <b>G. Yang</b>, Y. Li
-              <br>
-              <b>[TCSVT 2024]</b> 
-              <a href="pdf_geng\TCSVT2024-MIViT.pdf">Paper</a>
+    <!-- 4. Honors & Awards -->
+    <section>
+        <h2 class="section-title">Honors & Awards</h2>
+        
+        <!-- Major Contest Award 1 (Text Only) -->
+        <div class="contest-item">
+            <span class="contest-title">Second Prize, National System Contest</span>
+            <div class="contest-desc">
+                Our team, supervised by <a href="https://scholar.google.com/citations?user=GinaT0wAAAAJ&hl=zh-CN">Prof. Jie Lei</a>, received <b>¥3,690,000 project funding</b>. 
+                This contest focused on DNN model inference on a cloud FPGA system.
+            </div>
+            <div class="contest-meta">
+                <i class="fas fa-user-tag"></i> Role: Student Leader
+            </div>
+        </div>
 
-            </td>
-          </tr>
-          
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\HyBNN.png" alt="HyBNN" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="HyBNN">
-                <b>HyBNN: Quantifying and Optimizing Hardware Efficiency of Binary Neural Networks</b>
-              </a>
-              <br>
-              <b>G. Yang</b>, J. Lei, Z. Fang, Y. Li, J. Wang, W. Xie
-              <br>
-              <b>[TRETS 2023]</b> 
-              <b>[FPT 2023 Journal Track]</b> 
-              <a href="pdf_geng\TRETS2023-HyBNN.pdf">Paper</a>/
-              <a href="PPT_geng\HyBNN-FPT2023-Oral.pdf">FPT 2023 Oral report</a> 
-            </td>
-          </tr>
+        <!-- Major Contest Award 2 (Text Only) -->
+        <div class="contest-item">
+            <span class="contest-title">Third Prize, National Competition (Embedded FPGA)</span>
+            <div class="contest-desc">
+                Our team, supervised by <a href="https://scholar.google.com/citations?user=y0ha5lMAAAAJ&hl=zh-CN">Prof. Weiying Xie</a>, received <b>¥950,000 project funding</b>. 
+                This contest focused on DNN model inference on an embedded FPGA system.
+            </div>
+            <div class="contest-meta">
+                <i class="fas fa-user-tag"></i> Role: Student Leader
+            </div>
+        </div>
 
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\ghost.png" alt="GHOST" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="GHOST">
-                <b>Guided Hybrid Quantization for Object Detection in Remote Sensing Imagery via One-to-one Self-teaching</b>
-              </a>
-              <br>
-                 J. Zhang, J. Lei, W. Xie, Y. Li, <b>G. Yang</b>, X. Jia
-              <br>
-              <b>[TGRS 2023]</b> 
-              <a href="pdf_geng\TGRS2023-GHOST.pdf">Paper</a>
-
-            </td>
-          </tr>
-
-
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\OSCAR_RT_framework.jpg" alt="OSCAR-RT" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="OSCAR-RT">
-                <b>Algorithm/hardware Codesign for Real-time On-satellite CNN-based Ship Detection in SAR Imagery</b>
-              </a>
-              <br>
-              <b>G. Yang</b>, J. Lei, W. Xie, Z. Fang, Y. Li, J. Wang, X. Zhang
-              <br>
-              <b>[TGRS 2022]</b> 
-              <a href="pdf_geng\TGRS2022-OSCAR-RT.pdf">Paper</a>/
-              <a href="https://github.com/Michaela1224/OSCAR-RT">Code</a> 
-            </td>
-          </tr>
+    </section>
 
 
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\Fast_MGD.png" alt="Fast-MGD" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="Fast-MGD">
-                <b>A Low-complexity Hyperspectral Anomaly Detection Algorithm and its FPGA Implementation</b>
-              </a>
-              <br>
-              J. Lei, <b>G. Yang</b>,  W. Xie, Y. Li, X. Jia
-              <br>
-              <b>[JSTAR 2022]</b> 
-              <a href="pdf_geng\JSTAR2020-MGD.pdf">Paper</a> /
-              <a href="https://github.com/Michaela1224/Fast-MGD">Code</a> /
-              <a href="PPT_geng\Fast_MGD_Oral.pdf"><b>Excellent Oral report</b> in the 6th National Imaging Spectroscopic Earth Observation Symposium</a>
-
-            </td>
-          </tr>
-
-
-          <tr>
-            <td style="padding:12px;width:25%;vertical-align:middle">
-              <img src="image_geng\R_GAN.png" alt="R_GAN" width="231" height="118" style="border-style: none">
-            </td>
-            <td width="75%" valign="middle">
-              <a id="R_GAN">
-                <b>Rank-Aware Generative Adversarial Network for Hyperspectral Band Selection</b>
-              </a>
-              <br>
-                X. Zhang, W. Xie, Y. Li, J. Lei, Q, Du, <b>G. Yang</b>
-              <br>
-              <b>[TGRS 2022]</b> 
-              <a href="pdf_geng\TGRS2022-R-GAN.pdf">Paper</a> 
-            </td>
-          </tr>
-
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading id="Conference Abstracts">Conference Abstracts</heading>
-
-      <ul>
-        <li> <p>E4SA: An Ultra-Efficient Systolic Array Architecture for 4-Bit Convolutional Neural Networks, 
-          <b>G. Yang</b>, J. Lei, Z. Fang, J. Zhang, J. R. Zhang, W. Xie, Y. Li (<b>FPGA 2024 poster</b>)
-        </p>
-
-
-        <li> <p>HyBNN: Quantifying and Optimizing Hardware Efficiency of Binary Neural Networks, 
-          <b>G. Yang</b>, J. Lei, Z. Fang, Y. Li, J. Wang, W. Xie (<b>FCCM 2023 poster</b>)
-        </li>
-        </p>
-
-      </ul>
-        </td>
-      </tr>
-      </table>
-
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-          <td width="100%" valign="middle">
-            <heading id="Patents">Patents</heading>
-  
-        <ul>
-
-
-          <li> <p>Object Detection Based on Feature Fusion with Masked Networks for SAR Imagery, J. Lei, Y. Guo, <b>G. Yang</b>, W. Xie, Y. Li.
-            (CN202211567684.4 on Octoer  8, 2022)
-          </li>
-          </p>
-          
-          <li> <p>Object Detection Joint Pruning and Quantization for SAR Imagery, J. Lei, J. Wang, <b>G. Yang</b>, W. Xie, Y. Li.
-            (CN202111488427.7 on December 8, 2021)
-          </li>
-          </p>
-
-          <li> <p>FPGA-based Hyperspectral Anomaly Detection System, 2021, J. Lei, <b>G. Yang</b>, M. Zhang, W. Xie, Y. Li, T. Jiang, K. Liu, L. Gao.
-            (CN202110484719.7 on April 30, 2021)
-          </p>
-  
-        </ul>
-          </td>
-        </tr>
-        </table>
-
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-          <td style="padding:10px;width:100%;vertical-align:middle">
-            <heading id="Contests"><b>Contest Award</b></heading>
-          </td>
-        </tr>
-      </tbody></table>
-  
-  
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-  
-        <tr>
-          <td style="padding:12px;width:25%;vertical-align:middle">
-            <img src="image_geng\ROCKY.jpg" alt="Rocky" width="200" height="150" style="border-style: none">
-          </td>
-          <td width="75%" valign="middle">
-            <a id="HyBNN">
-              <b>Our team supervised by <a href="https://scholar.google.com/citations?user=GinaT0wAAAAJ&hl=zh-CN">Prof. Jie Lie </a>  won the second prize in the national system contest and received ¥3,690,000 project funding.</b>
+    <!-- Visitor Map Section -->
+    <div class="map-section">
+        <div class="map-card">
+            <a href="https://clustrmaps.com/site/1c97n" title="ClustrMaps">
+                <img src="//www.clustrmaps.com/map_v2.png?d=kzOGyehMjfWypQfrDdDd2ZeiNgtsVTYPKbIdPSHm-IQ&cl=ffffff" alt="Visitor Map">
             </a>
-            <br>
-             This contest focuses on DNN model inference on a cloud FPGA system. <b>Geng Yang</b> is student leader.
-            <br>
-          </td>
-        </tr>
+            <div class="map-caption">
+                <i class="fas fa-heart" style="color: #ff4d4f;"></i>
+                <span>Thank you for visiting!</span>
+            </div>
+        </div>
+    </div>
 
-        <tr>
-          <td style="padding:12px;width:25%;vertical-align:middle">
-            <img src="image_geng\SATIPIC.jpg" alt="SATIPIC" width="200" height="150" style="border-style: none">
-          </td>
-          <td width="75%" valign="middle">
-            <a id="HyBNN">
-              <b>Our team supervised by <a href="https://scholar.google.com/citations?user=y0ha5lMAAAAJ&hl=zh-CN">Prof. Weiying Xie </a> won the third prize in the national competition and received  ¥950,000 project funding.</b>
-            </a>
-            <br>
-            This contest focuses on DNN model inference on an embedded FPGA system. <b>Geng Yang</b> is student leader.
-            <br>
-          </td>
-        </tr>
+    <!-- Footer -->
+    <footer style="text-align: center; font-size: 0.85rem; color: #9ca3af; margin-top: 60px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+        <p>&copy; 2026 Geng Yang. Last updated: Feb 2026.</p>
+    </footer>
 
+</div>
 
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-          <td width="100%" valign="middle">
-            <heading id="Honors">Honors and Awards</heading>
-
-              <ul>
-                <li>
-                  Innovation Fund of Xidian University in 2022,2023
-                </li>
-                <li>
-                  GuoRui Scholarship of the 14th Research Institute of China Electronics Technology Group Corporation in 2021,2022
-                </li>
-                <li>
-                  Second Scholarship of Xidian University in 2020,2021,2022,2023
-                </li>
-                <li>
-                  Collaboration-Innovation Scholarship of China Electronics Technology Group Corporation and Xidian University in 2020
-                </li>
-                <li>
-                  Outstanding Graduate Student of Xidian University in 2019
-                </li>
-              </ul>
-
-
-          </td>
-        </tr>
-        </table>
-
-
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td width="100%" valign="middle">
-          <heading id="Services">Professional Services</heading>
-
-    <ul>
-      <li>
-        <b>Conference Secondary Reviewer</b>
-          <ul>
-            <li>
-              FPL'24
-            </li>
-            <li>
-              FPGA'24
-            </li>
-            <li>
-              DAC'23, 24
-            </li>
-            <li>
-              DATE'24
-            </li>
-          </ul>
-      </li>
-    </ul>
-
-        </td>
-      </tr>
-      </table>
-
-
-  
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-          <td width="100%" valign="middle">
-            <heading id="Demo">FPGA Acceleration Demo</heading>
-              <ul>
-                <li><p>
-                  CNN-based Ship Detection in SAR imagery
-                </p>
-                <p>
-                  This is a demo presentation for Paper:<b>Algorithm/hardware codesign for real-time on-satellite CNN-based ship detection in SAR imagery.</b>
-                </p>
-                <p>
-                  Thanks to the laboratory partners who worked together to finish this topic!
-                </p>
-                <video width="445" height="300" controls autoplay>
-                  <source src="video_geng\object detection.MP4" type="video/mp4">
-                </video>
-              </ul>
-          </td>
-        </tr>
-        </table>
-
-<!--         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody> -->
-        <table style="width:100%;border:0px;border-spacing:0px;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br><hr width=80%>
-              <p style="text-align:right;font-size:small;color:gray;">
-                Last updated on 12/2023 EDT.
-                <br>
-                <a href="https://jonbarron.info/">Webpage template</a>
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
-
-
-
-
-  
 </body>
-
 </html>
