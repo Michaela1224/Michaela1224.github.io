@@ -142,7 +142,7 @@
 
         /* --- 论文板块 --- */
         .pub-item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .pub-title {
@@ -182,6 +182,29 @@
             color: var(--primary-color);
         }
 
+        /* 角色标签样式 */
+        .role-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .role-co {
+            background-color: #f3f4f6;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+        }
+
+        .role-first {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border: 1px solid #bfdbfe;
+        }
+
         .pub-links {
             margin-top: 6px;
         }
@@ -202,7 +225,7 @@
             color: var(--primary-color);
         }
 
-        /* --- 竞赛奖项详细展示样式 (无图版) --- */
+        /* --- 竞赛奖项详细展示样式 --- */
         .contest-item {
             margin-bottom: 25px;
             padding-bottom: 15px;
@@ -210,7 +233,7 @@
         }
         
         .contest-item:last-of-type {
-            border-bottom: none; /* 最后一个不需要下划线，因为它上面有列表 */
+            border-bottom: none; 
         }
 
         .contest-title {
@@ -245,7 +268,7 @@
         }
 
         .map-card {
-            display: inline-block; /* 让卡片宽度自适应内容 */
+            display: inline-block;
             background-color: var(--bg-color);
             border: 1px solid #e5e7eb;
             border-radius: 12px;
@@ -286,12 +309,6 @@
             }
             .social-links {
                 justify-content: center;
-            }
-            .award-item {
-                flex-direction: column;
-            }
-            .award-year {
-                margin-bottom: 2px;
             }
         }
     </style>
@@ -348,9 +365,9 @@
 
     <!-- 3. Selected Publications -->
     <section>
-        <h2 class="section-title">Publications</h2>
+        <h2 class="section-title">Selected Publications</h2>
         
-        <!-- NEW PAPER: ASPLOS 2026 -->
+        <!-- ASPLOS 2026 (Co-authored) -->
         <div class="pub-item">
             <a href="#" class="pub-title">Falcon: Algorithm-Hardware Co-Design for Efficient Fully Homomorphic Encryption Accelerator</a>
             <div class="pub-authors">
@@ -358,13 +375,14 @@
             </div>
             <div class="pub-venue">
                 <span class="tag-venue">ASPLOS 2026</span> · International Conference on Architectural Support for Programming Languages and Operating Systems
+                <span class="role-tag role-co">Co-authored</span>
             </div>
             <div class="pub-links">
                 <span class="link-pill">Coming Soon</span>
             </div>
         </div>
 
-        <!-- NEW PAPER: HPCA 2026 (Marked as Co-First Author) -->
+        <!-- HPCA 2026 (Co-First) -->
         <div class="pub-item">
             <a href="#" class="pub-title">An Efficient and Scalable Hardware Architecture for Number Theoretic Transform on FPGA with Design Automation</a>
             <div class="pub-authors">
@@ -372,14 +390,15 @@
                 <span style="font-size: 0.9em; color: var(--text-light);">(* Equal contribution)</span>
             </div>
             <div class="pub-venue">
-                <span class="tag-venue">HPCA 2026</span> · IEEE International Symposium on High-Performance Computer Architecture (Acceptance Rate: 19.7%)
+                <span class="tag-venue">HPCA 2026</span> · IEEE International Symposium on High-Performance Computer Architecture
+                <span class="role-tag role-first">Co-First Author</span>
             </div>
             <div class="pub-links">
                 <span class="link-pill">Coming Soon</span>
             </div>
         </div>
 
-        <!-- Paper 1: FPT 2024 FLUD (Updated Authors) -->
+        <!-- FPT 2024 (FLUD - Co-authored) -->
         <div class="pub-item">
             <a href="pdf_geng/FPT2024-FLUD.pdf" class="pub-title">FLUD: A Scalable and Configurable Systolic Array Design for LU Decomposition on FPGAs</a>
             <div class="pub-authors">
@@ -387,14 +406,14 @@
             </div>
             <div class="pub-venue">
                 <span class="tag-venue">FPT 2024</span> · International Conference on Field-Programmable Technology
+                <span class="role-tag role-co">Co-authored</span>
             </div>
             <div class="pub-links">
                 <a href="pdf_geng/FPT2024-FLUD.pdf" class="link-pill">PDF</a>
             </div>
         </div>
         
-
-        <!-- Paper 1: FPL 2024 SDA (Updated Authors) -->
+        <!-- FPL 2024 (SDA - First Author) -->
         <div class="pub-item">
             <a href="pdf_geng/FPL2024-SDA.pdf" class="pub-title">SDA: Low-Bit Stable Diffusion Acceleration on Edge FPGAs</a>
             <div class="pub-authors">
@@ -409,7 +428,7 @@
             </div>
         </div>
 
-        <!-- Paper 2: FPL 2024 SA4 (Updated Authors) -->
+        <!-- FPL 2024 (SA4 - First Author) -->
         <div class="pub-item">
             <a href="pdf_geng/FPL2024-SA4.pdf" class="pub-title">SA4: A Comprehensive Analysis and Optimization of Systolic Array Architecture for 4-bit Convolutions</a>
             <div class="pub-authors">
@@ -424,7 +443,7 @@
             </div>
         </div>
 
-        <!-- Paper 3: TCSVT 2024 (Updated Authors) -->
+        <!-- TCSVT 2024 (MIViT - Co-authored) -->
         <div class="pub-item">
             <a href="pdf_geng/TCSVT2024-MIViT.pdf" class="pub-title">Multimodal Informative ViT: Information Aggregation and Distribution for Hyperspectral and LiDAR Classification</a>
             <div class="pub-authors">
@@ -432,13 +451,14 @@
             </div>
             <div class="pub-venue">
                 <span class="tag-venue">TCSVT 2024</span> · IEEE Transactions on Circuits and Systems for Video Technology
+                <span class="role-tag role-co">Co-authored</span>
             </div>
             <div class="pub-links">
                 <a href="pdf_geng/TCSVT2024-MIViT.pdf" class="link-pill">PDF</a>
             </div>
         </div>
 
-        <!-- Paper 4: TRETS 2023 (Updated Authors) -->
+        <!-- TRETS 2023 (First Author) -->
         <div class="pub-item">
             <a href="pdf_geng/TRETS2023-HyBNN.pdf" class="pub-title">HyBNN: Quantifying and Optimizing Hardware Efficiency of Binary Neural Networks</a>
             <div class="pub-authors">
@@ -453,7 +473,7 @@
             </div>
         </div>
 
-        <!-- Paper 5: TGRS 2022 (Updated Authors) -->
+        <!-- TGRS 2022 (First Author) -->
         <div class="pub-item">
             <a href="pdf_geng/TGRS2022-OSCAR-RT.pdf" class="pub-title">Algorithm/hardware Codesign for Real-time On-satellite CNN-based Ship Detection in SAR Imagery</a>
             <div class="pub-authors">
@@ -468,7 +488,7 @@
             </div>
         </div>
 
-        <!-- Paper 5: JSTAR 2020 (Updated Authors) -->
+        <!-- JSTAR 2020 (Student First Author) -->
         <div class="pub-item">
             <a href="pdf_geng/JSTAR2020-MGD.pdf" class="pub-title">A Low-complexity Hyperspectral Anomaly Detection Algorithm and Its FPGA Implementation</a>
             <div class="pub-authors">
@@ -476,6 +496,7 @@
             </div>
             <div class="pub-venue">
                 <span class="tag-venue">JSTAR 2020</span> · IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing
+                <span class="role-tag role-first">Student First Author</span>
             </div>
             <div class="pub-links">
                 <a href="pdf_geng/JSTAR2020-MGD.pdf" class="link-pill">PDF</a>
